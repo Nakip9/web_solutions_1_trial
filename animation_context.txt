@@ -1,0 +1,329 @@
+# Table of Contents
+- tailwind.config.mjs
+- package.json
+- src/components/sections/Hero.astro
+- src/components/react/HeroSection.tsx
+
+## File: tailwind.config.mjs
+
+- Extension: .mjs
+- Language: unknown
+- Size: 1987 bytes
+- Created: 2025-12-28 15:51:28
+- Modified: 2025-12-28 15:51:28
+
+### Code
+
+```unknown
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+    theme: {
+        extend: {
+            colors: {
+                background: 'hsl(var(--color-bg))', 
+                primary: {
+                    DEFAULT: 'hsl(var(--color-primary))',
+                    light: 'hsl(var(--color-primary-light))',
+                    dark: 'hsl(var(--color-primary-dark))',
+                },
+                bg: 'hsl(var(--color-bg))',
+                surface: 'hsl(var(--color-surface))',
+                muted: 'hsl(var(--color-muted))',
+                foreground: 'hsl(var(--color-foreground))',
+            },
+            fontFamily: {
+                sans: ['IBM Plex Sans Arabic', 'Inter', 'sans-serif'],
+                arabic: ['IBM Plex Sans Arabic', 'sans-serif'],
+            },
+            // --- NEW TRENDY ANIMATIONS ---
+            animation: {
+                'float': 'float 6s ease-in-out infinite',
+                'blob': 'blob 7s infinite',
+                'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-20px)' },
+                },
+                blob: {
+                    "0%": { transform: "translate(0px, 0px) scale(1)" },
+                    "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                    "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                    "100%": { transform: "translate(0px, 0px) scale(1)" }
+                },
+                fadeInUp: {
+                    '0%': { opacity: '0', transform: 'translateY(20px)' },
+                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                }
+            }
+        },
+    },
+    plugins: [],
+}
+```
+
+## File: package.json
+
+- Extension: .json
+- Language: json
+- Size: 722 bytes
+- Created: 2025-12-25 16:45:46
+- Modified: 2025-12-25 16:45:46
+
+### Code
+
+```json
+{
+  "name": "erateek-web",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/tailwind": "^5.1.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.0.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.26",
+    "lucide-react": "^0.562.0",
+    "motion": "^10.17.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^3.4.1",
+    "tsparticles-slim": "^2.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19"
+  }
+}
+
+```
+
+## File: src/components/sections/Hero.astro
+
+- Extension: .astro
+- Language: unknown
+- Size: 6076 bytes
+- Created: 2025-12-28 15:51:38
+- Modified: 2025-12-28 15:51:38
+
+### Code
+
+```unknown
+---
+import Button from "../ui/Button.astro";
+import GlassCardStack from "../react/GlassCardStack";
+---
+
+<section class="relative min-h-[95vh] flex items-center pt-20 overflow-hidden bg-white">
+  
+  {/* --- TRENDY BACKGROUND START --- */}
+  <div class="absolute inset-0 w-full h-full pointer-events-none">
+    {/* 1. Base Grain texture for premium feel (Optional, creates subtle noise) */}
+    <div class="absolute inset-0 opacity-[0.03] bg-repeat mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%221%22/%3E%3C/svg%3E');"></div>
+    
+    {/* 2. Animated Aurora Blobs */}
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+    <div class="absolute top-0 right-40 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+    <div class="absolute -bottom-32 left-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+    
+    {/* 3. Modern Grid Overlay (Subtle) */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+  </div>
+  {/* --- TRENDY BACKGROUND END --- */}
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      {/* RIGHT COLUMN: Typography (Span 7 cols) */}
+      <div class="lg:col-span-7 text-right space-y-8 order-2 lg:order-1">
+        
+        {/* Modern Pill Badge */}
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface border border-primary/10 shadow-sm transition-transform hover:scale-105 cursor-default">
+           <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+            </span>
+           <span class="text-primary text-xs font-bold tracking-wide">وكالة إراتيك الرقمية</span>
+        </div>
+
+        {/* Massive Headline with gradient */}
+        <h1 class="text-5xl md:text-7xl lg:text-8xl/none font-black text-slate-900 tracking-tight animate-fade-in-up">
+          نحول أفكارك إلى <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-l from-primary via-blue-600 to-purple-600">
+             واقع ملموس
+          </span>
+        </h1>
+
+        <p class="text-xl md:text-2xl text-slate-500 max-w-2xl leading-relaxed font-normal opacity-0 animate-[fadeInUp_0.8s_ease-out_0.2s_forwards]">
+          نحن لا نبني مواقع إلكترونية فحسب، بل نصنع <span class="text-slate-800 font-semibold decoration-primary/30 underline decoration-2 underline-offset-4">تجارب رقمية فاخرة</span> تعزز مكانة علامتك التجارية.
+        </p>
+
+        {/* Action Buttons */}
+        <div class="flex flex-col sm:flex-row gap-4 pt-4 opacity-0 animate-[fadeInUp_0.8s_ease-out_0.4s_forwards]">
+          <Button size="lg" class="h-14 px-10 rounded-2xl text-lg shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all">
+            ابدأ مشروعك
+          </Button>
+          
+          <a href="/services" class="group inline-flex items-center justify-center h-14 px-8 rounded-2xl text-lg font-semibold text-slate-600 bg-white border border-slate-200 shadow-sm hover:border-primary/30 hover:text-primary transition-all duration-300">
+             <span>تصفح أعمالنا</span>
+             {/* Animated Arrow */}
+             <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 w-5 h-5 transform group-hover:-translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </a>
+        </div>
+
+        {/* Trust Indicators */}
+        <div class="pt-10 flex items-center gap-6 opacity-0 animate-[fadeInUp_0.8s_ease-out_0.6s_forwards]">
+            <div class="flex -space-x-3 space-x-reverse">
+                {[1,2,3,4].map(() => (
+                    <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200"></div>
+                ))}
+            </div>
+            <div class="text-sm font-medium text-slate-600">
+                انضم لأكثر من <span class="font-bold text-slate-900">+150</span> عميل سعيد
+            </div>
+        </div>
+      </div>
+
+      {/* LEFT COLUMN: Visual (Span 5 cols) */}
+      <div class="lg:col-span-5 order-1 lg:order-2 relative h-[500px] w-full perspective-1000 flex items-center justify-center">
+         {/* Glow behind the React component */}
+         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-primary/10 to-purple-200/20 rounded-full blur-[60px] animate-pulse-slow"></div>
+         
+         {/* The 3D Glass Stack - Hydrated for interactivity */}
+         <div class="relative z-10 scale-110 lg:scale-125 hover:scale-[1.3] transition-transform duration-700 ease-out">
+             <GlassCardStack client:visible />
+         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+    /* Utility for animation delay */
+    .animation-delay-2000 {
+        animation-delay: 2s;
+    }
+    .animation-delay-4000 {
+        animation-delay: 4s;
+    }
+</style>
+```
+
+## File: src/components/react/HeroSection.tsx
+
+- Extension: .tsx
+- Language: typescript
+- Size: 5083 bytes
+- Created: 2025-12-25 17:16:32
+- Modified: 2025-12-25 17:16:32
+
+### Code
+
+```typescript
+import React from 'react';
+import { Play, ArrowLeft, Star } from 'lucide-react';
+import GlassCardStack from './GlassCardStack';
+
+const HeroSection = () => {
+  return (
+    <section className="relative w-full min-h-screen flex items-center justify-center pt-32 pb-12 px-4 sm:px-6 lg:px-8 z-10 overflow-hidden">
+      {}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-400/10 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
+
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        {}
+        <div className="flex flex-col items-start space-y-8 order-2 lg:order-1 relative z-20">
+          
+          {}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface border border-primary/10 text-primary text-sm font-semibold shadow-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span>وكالة رقمية رائدة</span>
+          </div>
+
+          {}
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.2] tracking-tight text-foreground">
+            نصنع مستقبل <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600 inline-block pb-2">
+              الرفاهية الرقمية
+            </span>
+          </h1>
+
+          {}
+          <p className="text-lg text-muted max-w-xl leading-relaxed font-medium">
+            نحن نصمم مواقع عالية الأداء وتجارب رقمية مخصصة للعلامات التجارية العالمية التي تبحث عن التميز والابتكار في كل تفاصيلها.
+          </p>
+
+          {}
+          <div className="flex flex-wrap gap-4 w-full sm:w-auto mt-2">
+            <button className="group relative px-8 py-4 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 flex items-center gap-3">
+              <span>خدماتنا</span>
+              <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            </button>
+            
+            <button className="group px-8 py-4 bg-white hover:bg-surface border border-slate-200 text-foreground rounded-xl font-bold transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-3">
+              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <Play className="w-3.5 h-3.5 fill-current ml-0.5" /> 
+              </span>
+              <span>شاهد أعمالنا</span>
+            </button>
+          </div>
+
+          {}
+          <div className="pt-6 flex items-center gap-6 border-t border-slate-100 w-full max-w-md">
+            <div className="flex -space-x-4 space-x-reverse">
+              {}
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="w-12 h-12 rounded-full border-[3px] border-white bg-slate-200 shadow-sm" />
+              ))}
+              <div className="w-12 h-12 rounded-full bg-surface border-[3px] border-white flex items-center justify-center text-xs font-bold text-primary shadow-sm">
+                +2k
+              </div>
+            </div>
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-1">
+                <span className="font-bold text-foreground text-lg">4.9</span>
+                <div className="flex text-yellow-400">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="w-4 h-4 fill-current" />
+                    ))}
+                </div>
+              </div>
+              <span className="text-sm text-muted font-medium">تقييم العملاء</span>
+            </div>
+          </div>
+        </div>
+
+        {}
+        <div className="order-1 lg:order-2 flex justify-center items-center relative h-[500px] w-full perspective-1000">
+             {}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-to-tr from-primary/20 to-purple-200/40 rounded-full blur-[80px]" />
+            
+            <GlassCardStack />
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
+```
+

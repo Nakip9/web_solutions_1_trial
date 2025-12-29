@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Section Concept</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/tailwindcss">
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+      :root {
+        /* Primary */
+        --color-primary: 217 100% 50%; /* #007BFF Electric Blue */
+        --color-primary-light: 217 100% 65%;
+        --color-primary-dark: 217 100% 40%;
+
+        /* Neutrals (Glacial) */
+        --color-bg: 210 40% 98%; /* #F8FAFC */
+        --color-surface: 0 0% 100%; /* Pure white cards */
+        --color-muted: 215 20% 65%; /* Subtle text */
+        --color-foreground: 222 47% 11%; /* Dark text */
+
+        /* Glass effect tokens */
+        --glass-blur: 16px;
+        --glass-bg: rgba(255, 255, 255, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.3);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        background-color: hsl(var(--color-bg));
+        color: hsl(var(--color-foreground));
+      }
+    }
+
+    /* Your custom glass class */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--glass-border);
+    }
+    
+    /* Utilities to use your CSS variables in Tailwind */
+    @layer utilities {
+        .text-primary { color: hsl(var(--color-primary)); }
+        .bg-primary { background-color: hsl(var(--color-primary)); }
+        .bg-primary-light { background-color: hsl(var(--color-primary-light)); }
+        .text-muted { color: hsl(var(--color-muted)); }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="relative overflow-hidden min-h-[90vh] flex items-center justify-center">
+
+    <div class="absolute top-0 -left-40 w-96 h-96 bg-primary/30 rounded-full mix-blend-multiply filter blur-[128px] opacity-70 animate-blob"></div>
+    <div class="absolute top-0 -right-40 w-96 h-96 bg-primary-light/40 rounded-full mix-blend-multiply filter blur-[128px] opacity-70 animate-blob animation-delay-2000"></div>
+    <div class="absolute -bottom-40 left-20 w-96 h-96 bg-primary/30 rounded-full mix-blend-multiply filter blur-[128px] opacity-70 animate-blob animation-delay-4000"></div>
+
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+
+        <div class="flex-1 text-center lg:text-left max-w-2xl">
+          <div class="inline-flex items-center py-1 px-3 mb-6 rounded-full bg-primary/10 text-primary text-sm font-medium glass">
+            <span class="flex w-2 h-2 me-2 bg-primary rounded-full"></span>
+            v2.0 Released — Explore the new design system
+          </div>
+
+          <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+            Build products with <br class="hidden lg:block">
+            <span class="text-primary relative">
+              glacial clarity.
+              <svg class="absolute -bottom-2 w-full h-3 text-primary/40" viewBox="0 0 200 9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 8.5C45 8.5 55 0.5 100 0.5C145 0.5 155 8.5 200 8.5" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+          </h1>
+
+          <p class="text-xl text-muted mb-10 leading-relaxed">
+            Leverage our electric blue energy and frosted glass aesthetics to create user interfaces that feel modern, spacious, and incredibly premium.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <button class="px-8 py-4 rounded-xl bg-primary text-white font-bold text-lg hover:bg-primary-dark transition-all shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-1">
+              Get Started Now
+            </button>
+
+            <button class="glass px-8 py-4 rounded-xl font-bold text-lg text-foreground hover:bg-white/50 transition-all hover:-translate-y-1">
+              View Documentation
+            </button>
+          </div>
+        </div>
+
+
+        <div class="flex-1 relative w-full max-w-xl lg:max-w-none mt-12 lg:mt-0 hidden md:block">
+          <div class="relative w-full h-[500px]">
+
+            <div class="glass absolute top-0 right-0 w-4/5 h-4/5 rounded-3xl -rotate-6 scale-95 z-0 opacity-60 overflow-hidden">
+                <div class="w-full h-full bg-gradient-to-tr from-primary/20 to-transparent"></div>
+            </div>
+
+            <div class="glass absolute top-12 right-12 w-4/5 h-4/5 rounded-3xl rotate-3 z-10 p-8 shadow-xl backdrop-blur-2xl flex flex-col justify-between">
+               <div class="flex justify-between items-center mb-8">
+                 <div class="h-8 w-24 bg-primary/20 rounded-lg animate-pulse"></div>
+                 <div class="h-8 w-8 bg-primary/20 rounded-full"></div>
+               </div>
+               <div class="space-y-4">
+                 <div class="h-4 w-3/4 bg-foreground/10 rounded animate-pulse"></div>
+                 <div class="h-4 w-full bg-foreground/10 rounded animate-pulse"></div>
+                 <div class="h-4 w-1/2 bg-foreground/10 rounded animate-pulse"></div>
+               </div>
+               <div class="mt-8 h-32 flex items-end justify-between gap-2">
+                   <div class="w-1/5 h-1/3 bg-primary/40 rounded-t-lg"></div>
+                   <div class="w-1/5 h-2/3 bg-primary/60 rounded-t-lg"></div>
+                   <div class="w-1/5 h-1/2 bg-primary/40 rounded-t-lg"></div>
+                   <div class="w-1/5 h-full bg-primary/80 rounded-t-lg relative">
+                       <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rounded-full shadow-lg shadow-primary/50"></div>
+                   </div>
+                   <div class="w-1/5 h-3/4 bg-primary/60 rounded-t-lg"></div>
+               </div>
+            </div>
+
+            <div class="glass absolute bottom-12 -left-8 w-48 h-48 rounded-2xl -rotate-12 z-20 p-6 flex items-center justify-center shadow-lg">
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-primary">98%</p>
+                    <p class="text-sm text-muted">Efficiency Boost</p>
+                </div>
+            </div>
+             <div class="glass absolute -top-8 left-20 w-24 h-24 rounded-xl rotate-12 z-20 p-4 flex items-center justify-center shadow-sm">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                 </svg>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </body>
+</html>

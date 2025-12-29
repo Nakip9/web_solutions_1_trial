@@ -1,0 +1,55 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/sections/Navbar.astro";
+import HeroSection from "../components/react/HeroSection";
+import ClientMarquee from "../components/sections/ClientMarquee.astro";
+import BentoServices from "../components/sections/BentoServices.astro";
+import BlogPreview from "../components/sections/BlogPreview.astro";
+import Footer from "../components/sections/Footer.astro";
+---
+
+<MainLayout title="الرئيسية | إراتيك - وكالة رقمية">
+  <Navbar />
+
+  <main>
+    <HeroSection client:load />
+
+    <ClientMarquee />
+
+    <BentoServices />
+
+    <BlogPreview />
+
+    <section class="py-24 bg-white">
+      <div class="container mx-auto px-6">
+        <div
+          class="bg-slate-900 rounded-[50px] p-12 md:p-24 text-center text-white relative overflow-hidden"
+        >
+          <h2 class="text-4xl md:text-6xl font-black mb-8 relative z-10">
+            هل أنت مستعد للتغيير؟
+          </h2>
+          <p
+            class="text-white/60 text-xl mb-12 max-w-2xl mx-auto relative z-10"
+          >
+            انضم إلى قائمة عملائنا المميزين وابدأ رحلة التحول الرقمي لمشروعك
+            اليوم.
+          </p>
+          <div class="relative z-10">
+            <a
+              href="/contact"
+              class="inline-block bg-primary px-12 py-5 rounded-2xl font-black text-xl hover:scale-105 transition-transform"
+            >
+              احجز استشارتك المجانية
+            </a>
+          </div>
+          <div
+            class="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/20 rounded-full blur-[100px]"
+          >
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</MainLayout>

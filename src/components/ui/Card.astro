@@ -1,0 +1,22 @@
+---
+import { twMerge } from "tailwind-merge";
+
+interface Props {
+  class?: string;
+  hoverEffect?: boolean;
+}
+
+const { class: className, hoverEffect = false } = Astro.props;
+
+const baseClass =
+  "glass rounded-xl p-6 transition-all duration-300 border border-white/40 shadow-sm";
+const hoverClass = hoverEffect
+  ? "hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 hover:border-primary/30"
+  : "";
+
+const classes = twMerge(baseClass, hoverClass, className);
+---
+
+<div class={classes}>
+  <slot />
+</div>

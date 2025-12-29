@@ -1,0 +1,109 @@
+---
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const latestPosts = allPosts
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3);
+---
+
+<section id="blog" class="py-32 bg-white relative overflow-hidden">
+  <div
+    class="absolute top-0 left-0 w-[800px] h-[800px] bg-secondary/5 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2 pointer-events-none"
+  >
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2
+        class="text-4xl md:text-6xl font-black text-foreground mb-6 leading-tight"
+      >
+        آخر <span class="text-primary">مقالاتنا</span>
+      </h2>
+      <p class="text-xl text-muted max-w-2xl mx-auto leading-relaxed">
+        نشارك معك أحدث النصائح والاستراتيجيات في عالم التطوير الرقمي
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      {
+        latestPosts.map((post) => (
+          <a
+            href={`/blog/${post.slug}`}
+            class="group bg-surface rounded-[2rem] overflow-hidden border border-foreground/5 hover:border-primary/20 transition-all duration-300 hover:shadow-xl"
+          >
+            {post.data.image && (
+              <div class="h-48 overflow-hidden relative">
+                <img 
+                  src={post.data.image} 
+                  alt={post.data.title}
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                {/* Optional: Overlay gradient to make text clearer if needed, or remove */}
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            )}
+
+            <div class="p-8">
+              <div class="flex flex-wrap gap-2 mb-4">
+                {post.data.tags.slice(0, 2).map((tag) => (
+                  <span class="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full font-bold">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <h3 class="text-2xl font-black text-foreground mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                {post.data.title}
+              </h3>
+
+              <p class="text-muted leading-relaxed mb-6 line-clamp-3">
+                {post.data.description}
+              </p>
+
+              <div class="flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all">
+                <span>اقرأ المزيد</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <>
+                    <path d="M5 12h14" />
+                    <path d="M12 5l7 7-7 7" />
+                  </>
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="text-center">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-surface border-2 border-foreground/10 hover:border-primary hover:bg-primary/5 rounded-xl font-bold text-foreground transition-all"
+      >
+        <span>عرض جميع المقالات</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5 rotate-180"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

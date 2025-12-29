@@ -1,0 +1,35 @@
+---
+import LiquidServices from "../react/LiquidServices";
+---
+
+<section id="services" class="py-32 bg-subtle relative overflow-hidden">
+  <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
+      <div class="max-w-2xl text-right">
+        <h2 class="text-4xl md:text-6xl font-black text-foreground mb-6 leading-tight">
+          خدماتنا <span class="text-primary">الاحترافية</span>
+        </h2>
+        <p class="text-xl text-muted leading-relaxed">
+            نقدم حلولاً متكاملة. المس البطاقات أدناه لمعرفة التفاصيل.
+        </p>
+      </div>
+      
+      {/* Link to Full Services Page */}
+      <a href="/services" class="hidden md:flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+        <span>عرض كل الخدمات</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    
+    {/* --- CHANGE THIS NUMBER FROM 5 TO 10 --- */}
+    <LiquidServices client:visible limit={10} />
+    
+    {/* Mobile Link for Full Services */}
+    <div class="mt-12 text-center md:hidden">
+        <a href="/services" class="inline-flex items-center gap-2 px-6 py-3 bg-surface border border-foreground/10 rounded-xl font-bold text-foreground">
+            <span>عرض كل الخدمات</span>
+        </a>
+    </div>
+  </div>
+</section>

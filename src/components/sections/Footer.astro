@@ -1,0 +1,100 @@
+---
+const currentYear = new Date().getFullYear();
+const footerLinks = [
+  {
+    title: "الشركة",
+    links: [
+      { label: "من نحن", href: "/about" },
+      { label: "خدماتنا", href: "/services" },
+      { label: "المدونة", href: "/blog" },
+      { label: "تواصل معنا", href: "/contact" },
+    ],
+  },
+  {
+    title: "الخدمات",
+    links: [
+      { label: "تطوير المواقع", href: "/services#web" },
+      { label: "الهوية البصرية", href: "/services#branding" },
+      { label: "التسويق الرقمي", href: "/services#marketing" },
+      { label: "صناعة المحتوى", href: "/services#content" },
+    ],
+  },
+  {
+    title: "روابط سريعة",
+    links: [
+      { label: "سياسة الخصوصية", href: "#" },
+      { label: "الشروط والأحكام", href: "#" },
+      { label: "الأسئلة الشائعة", href: "#" },
+    ],
+  },
+];
+---
+
+<footer
+  class="bg-dark text-white pt-20 pb-10 relative overflow-hidden mt-20 rounded-t-[3rem]"
+>
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50 blur-sm"
+  >
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div
+      class="flex flex-col lg:flex-row justify-between items-start gap-12 mb-20"
+    >
+      {/* Brand Section */}
+      <div class="max-w-xl">
+        <a href="/" class="text-3xl font-black tracking-tighter mb-6 block"
+          >إراتيك<span class="text-primary">.</span></a
+        >
+        <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+          لنصنع شيئاً <span
+            class="text-transparent bg-clip-text bg-gradient-to-l from-primary to-secondary"
+            >استثنائياً</span
+          > معاً.
+        </h2>
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="/contact"
+            class="px-8 py-4 bg-white text-dark rounded-full font-bold hover:bg-primary hover:text-white transition-all duration-300"
+          >
+            ابدأ مشروعك
+          </a>
+        </div>
+      </div>
+
+      {/* Links Columns */}
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-10 w-full lg:w-auto">
+        {
+          footerLinks.map((column) => (
+            <div>
+              <h4 class="font-bold text-lg mb-6 text-white">{column.title}</h4>
+              <ul class="space-y-4">
+                {column.links.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="text-slate-400 hover:text-white transition-colors text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    {/* Bottom Bar */}
+    <div
+      class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6"
+    >
+      <p class="text-slate-500 text-sm" dir="ltr">
+        &copy; {currentYear} Erateek Agency. All rights reserved.
+      </p>
+      <!-- <p class="text-slate-500 text-sm">صُنع بـ ❤️ في السعودية</p> -->
+    </div>
+  </div>
+</footer>

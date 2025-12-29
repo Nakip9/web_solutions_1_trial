@@ -1,0 +1,80 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/sections/Navbar.astro";
+import Footer from "../components/sections/Footer.astro";
+---
+
+<MainLayout title="من نحن | إراتيك">
+  <Navbar />
+
+  <main class="min-h-screen bg-background">
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 relative overflow-hidden">
+      <div
+        class="absolute top-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2"
+      >
+      </div>
+
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <h1
+          class="text-5xl md:text-7xl font-black text-foreground mb-8 leading-tight"
+        >
+          من <span class="text-primary">نحن</span>
+        </h1>
+        <p class="text-xl text-muted max-w-3xl mx-auto leading-relaxed">
+          وكالة رقمية رائدة متخصصة في تقديم حلول رقمية متكاملة ومبتكرة
+        </p>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="pb-32 px-4 md:px-6">
+      <div class="container mx-auto max-w-5xl">
+        <div
+          class="bg-surface rounded-[3rem] p-8 md:p-16 border border-foreground/5"
+        >
+          <div
+            class="prose prose-lg max-w-none
+            prose-headings:font-black prose-headings:text-foreground
+            prose-p:text-muted prose-p:leading-relaxed"
+          >
+            <h2 class="text-4xl mb-6">قصتنا</h2>
+            <p class="text-lg">
+              في <strong class="text-primary">إراتيك</strong>، نؤمن بأن النجاح
+              الرقمي يبدأ بفهم عميق لاحتياجات عملائنا. منذ تأسيسنا، كان هدفنا
+              واضحًا: مساعدة الشركات والعلامات التجارية على التميز في العالم
+              الرقمي من خلال حلول مبتكرة واستراتيجيات فعالة.
+            </p>
+
+            <h2 class="text-4xl mt-16 mb-6">رؤيتنا</h2>
+            <p class="text-lg">
+              نسعى لأن نكون الشريك الرقمي الأول للشركات الطموحة في المنطقة، من
+              خلال تقديم خدمات متميزة تجمع بين الإبداع والتقنية والاستراتيجية.
+            </p>
+
+            <h2 class="text-4xl mt-16 mb-6">قيمنا</h2>
+            <ul class="text-lg space-y-3">
+              <li>
+                <strong>الجودة</strong>: نلتزم بأعلى معايير الجودة في كل ما نقوم
+                به
+              </li>
+              <li>
+                <strong>الابتكار</strong>: نواكب أحدث التقنيات والاتجاهات
+                الرقمية
+              </li>
+              <li>
+                <strong>الشفافية</strong>: نبني علاقات قائمة على الثقة والوضوح
+              </li>
+              <li>
+                <strong>النتائج</strong>: نركز على تحقيق نتائج ملموسة وقابلة
+                للقياس
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</MainLayout>

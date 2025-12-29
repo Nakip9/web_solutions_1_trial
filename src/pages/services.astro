@@ -1,0 +1,31 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Navbar from "../components/sections/Navbar.astro";
+import Footer from "../components/sections/Footer.astro";
+import LiquidServices from "../components/react/LiquidServices";
+---
+
+<MainLayout title="خدماتنا | إراتيك">
+  <Navbar />
+
+  <main class="min-h-screen bg-background">
+    <section class="pt-40 pb-20 relative overflow-hidden">
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <h1 class="text-5xl md:text-7xl font-black text-foreground mb-8">
+          خدماتنا <span class="text-primary">الشاملة</span>
+        </h1>
+        <p class="text-xl text-muted max-w-2xl mx-auto">
+          من التصميم إلى التطوير والتسويق، نقدم لك كل ما تحتاجه للنمو الرقمي.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-32 px-4 md:px-6">
+      <div class="container mx-auto">
+        <LiquidServices client:visible />
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</MainLayout>
